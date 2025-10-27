@@ -1,11 +1,12 @@
-# M2 - MemoryCost (Page Fault and Memory Analysis)
+# 🧠 M2 - MemoryCost (Page Fault and Memory Analysis)
 
-Projeto desenvolvido para o trabalho M2 da disciplina **Sistemas Operacionais** (UNIVALI).
+Projeto desenvolvido para o trabalho **M2** da disciplina **Sistemas Operacionais – UNIVALI**.
 
-O objetivo é medir e analisar o comportamento de **paginação e page faults** em diferentes cenários de uso de memória,
-incluindo múltiplas threads e diferentes padrões de alocação.
+O objetivo é medir e analisar o comportamento de **paginação**, **page faults** e **uso de memória** em diferentes cenários, incluindo:
+- Alocação intensiva de memória (`MemoryCost`)
+- Execução multithread (`ThreadsStress`)
+- Ordenação de grandes vetores (`SortingStress`)
 
----
 
 ## 📁 Estrutura do Projeto
 
@@ -19,24 +20,20 @@ M2-MemoryCost/
 │ ├── threads_stress_mod.cpp
 │ └── CMakeLists.txt
 │
-├── SortingStress/ # Teste de uso de memória com algoritmos de ordenação
+├── SortingStress/ # Teste de algoritmos de ordenação
 │ ├── algOrdenacao.cpp / algOrdenacao.hpp
 │ ├── ordenacao_stress.cpp
 │ └── CMakeLists.txt
 │
-├── scripts/ # Scripts auxiliares
-│ ├── run_linux.sh / run_windows.ps1 # Executar testes
-│ ├── collect_linux.sh / collect_windows.ps1 # Coletar métricas
-│ ├── visualizar_memorycost.py / .ps1 # Visualizar resultados
+├── scripts/ # Scripts de execução e coleta
+│ ├── run_linux.sh / run_windows.ps1 # Executam todos os módulos
+│ ├── collect_linux.sh / collect_windows.ps1
 │
-├── results/ # Resultados coletados
-│ ├── memory_results.csv
-│ └── memorycost_graph.png
+├── results/ # Resultados gerados automaticamente
+│ └── *.csv
 │
-├── build/ # Pasta de build (gerada pelo CMake)
 ├── CMakeLists.txt
 └── README.md
-
 
 ---
 
@@ -49,13 +46,35 @@ M2-MemoryCost/
 git clone https://github.com/Gabyz04/M2-MemoryCost.git
 cd M2-MemoryCost
 
-# Criar pasta de build e compilar
-cmake -S . -B build
-cmake --build build -- -j
+# Dar permissão de execução aos scripts (apenas na primeira vez)
+chmod +x scripts/*.sh
 
-# Executar teste básico
-./build/MemoryCost/memory_cost_mod --size 1000000 --allocs 2 --threads 4 --pattern seq --stride 16 --duration 30 --output results/memory_results.csv
+# Executar testes
+./scripts/run_linux.sh 4 1000000 1 seq 16 20
 
+🔸 Parâmetros (nessa ordem):
+
+threads → número de threads
+
+blocksize → tamanho do bloco de memória (em inteiros)
+
+allocs → número de alocações
+
+pattern → padrão de acesso (seq ou rand)
+
+stride → espaçamento de acesso à memória
+
+duration → tempo de execução em segundos
+
+🔸 O script executa automaticamente:
+
+MemoryCost (teste de page faults e alocação)
+
+ThreadsStress (teste de uso intensivo de threads)
+
+SortingStress (teste de ordenação de grandes vetores)
+
+Os resultados são salvos na pasta results/.
 
 ### 🔹 Windows
 
@@ -63,8 +82,10 @@ cmake --build build -- -j
 git clone https://github.com/Gabyz04/M2-MemoryCost.git
 cd M2-MemoryCost
 
-# Executar via PowerShell
-.\scripts\run_windows.ps1 -threads 4 -blocksize 1000000 -allocs 2 -pattern seq -stride 16 -duration 30
+# Executar testes
+.\scripts\run_windows.ps1 -threads 4 -blocksize 1000000 -allocs 1 -pattern seq -stride 16 -duration 20
+
+O script realiza o build automático via CMake, executa os três módulos e grava os resultados em results\.
 
 ## 🧪 Coleta de Dados
 
