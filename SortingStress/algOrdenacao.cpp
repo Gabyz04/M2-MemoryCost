@@ -1,8 +1,18 @@
 // SortingStress/algOrdenacao.cpp
-#include "algOrdenacao.hpp"
-#include <algorithm>
-#include <random>
-#include <vector>
+#ifdef _WIN32
+    #include <iostream>
+    #include <vector>
+    #include <string>
+    #include <algorithm>
+    #include <chrono>
+    #include <thread>
+    #include <random>
+    #include <iomanip>
+    #include <cmath>
+#else
+    #include <bits/stdc++.h>
+#endif
+
 
 using namespace std;
 

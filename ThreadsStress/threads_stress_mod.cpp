@@ -3,10 +3,23 @@
 //
 // Build: cmake && make
 
-#include <bits/stdc++.h>
+#ifdef _WIN32
+    #include <iostream>
+    #include <vector>
+    #include <string>
+    #include <algorithm>
+    #include <chrono>
+    #include <thread>
+    #include <random>
+    #include <iomanip>
+    #include <cmath>
+#else
+#endif
 #if !defined(_WIN32)
+#include <bits/stdc++.h>
   #include <sys/resource.h>
 #endif
+
 using namespace std;
 
 int main(int argc, char** argv){

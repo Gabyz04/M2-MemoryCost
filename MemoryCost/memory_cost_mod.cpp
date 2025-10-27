@@ -4,15 +4,27 @@
 //
 // Build: cmake .. && cmake --build . -- -j
 
-#include <bits/stdc++.h>
 #if defined(_WIN32)
-  #include <windows.h>
-  #include <psapi.h>
+    #include <iostream>
+    #include <filesystem>
+    #include <fstream>
+    #include <vector>
+    #include <string>
+    #include <algorithm>
+    #include <chrono>
+    #include <thread>
+    #include <random>
+    #include <iomanip>
+    #include <cmath>
+    #include <windows.h>
+    #include <psapi.h>
 #else
+    #include <bits/stdc++.h>
   #include <sys/resource.h>
   #include <unistd.h>
 #endif
 
+namespace fs = std::filesystem;
 using namespace std;
 
 struct Config {
@@ -123,8 +135,9 @@ int main(int argc, char** argv) {
 
     double dur = chrono::duration<double>(t1-t0).count();
     // ensure results dir exists
-    std::filesystem::path outp(cfg.output);
-    std::filesystem::create_directories(outp.parent_path());
+    fs::path outp(cfg.output);
+    fs::create_directories(outp.parent_path());
+
 
     ofstream out(cfg.output, ios::app);
     // header if empty

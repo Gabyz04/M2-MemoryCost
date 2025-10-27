@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
-project(M2_MemoryCost_Project)
+project(M2-MemoryCost)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -Wall")
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(MemoryCost)
-add_subdirectory(ThreadsStress)
 add_subdirectory(SortingStress)
+add_subdirectory(ThreadsStress)
