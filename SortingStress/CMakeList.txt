@@ -1,0 +1,3 @@
+add_library(algOrdenacao STATIC algOrdenacao.cpp)
+add_executable(ordenacao_stress ordenacao_stress.cpp)
+target_link_libraries(ordenacao_stress PRIVATE algOrdenacao)

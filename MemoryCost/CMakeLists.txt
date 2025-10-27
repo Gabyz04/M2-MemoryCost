@@ -1,0 +1,2 @@
+add_executable(memory_cost_mod memory_cost_mod.cpp)
+target_compile_definitions(memory_cost_mod PRIVATE _CRT_SECURE_NO_WARNINGS)

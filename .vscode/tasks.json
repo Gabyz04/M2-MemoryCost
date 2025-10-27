@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "CMake: configure & build",
+      "type": "shell",
+      "command": "cmake -S . -B build && cmake --build build -- -j",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Run memory_cost_mod (Linux example)",
+      "type": "shell",
+      "command": "./build/MemoryCost/memory_cost_mod --size 1000000 --allocs 1 --threads 4 --pattern seq --stride 16 --duration 20 --output results/memory_results.csv",
+      "group": "none"
+    }
+  ]
+}

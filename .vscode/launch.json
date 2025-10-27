@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run memory_cost_mod",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/MemoryCost/memory_cost_mod",
+      "args": ["--size","1000000","--allocs","1","--threads","4","--pattern","seq","--stride","16","--duration","20","--output","results/memory_results.csv"],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+/build/
+/results/
+/.vscode/.history
+*.exe
+*.obj
+*.o
